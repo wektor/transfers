@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Open</title>
+</head>
+<body>
+<h2>Open</h2>
+
+{% if form.errors or invalid_password %}
+    <ul>
+    {% for error in form.errors %}
+        <li><strong>{{ error|escape }}</strong></li>
+    {% endfor %}
+    {% if invalid_password %}
+        <li><strong>Invalid password</strong></li>
+    {% endif %}
+    </ul>
+{% endif %}
+
+
+
+<form method="post" >
+{% csrf_token %}
+{{form}}
+<button type="submit" class="btn btn-default">Submit</button>
+</form>
+</body>
+</html>
